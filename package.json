@@ -1,0 +1,27 @@
+{
+  "name": "line-messaging",
+  "version": "1.0.1",
+  "description": "SDK of the LINE Message API for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snlangsuan/line-messaging.git"
+  },
+  "keywords": [
+    "LINE",
+    "messaging",
+    "api"
+  ],
+  "author": "decimo.me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snlangsuan/line-messaging/issues"
+  },
+  "homepage": "https://github.com/snlangsuan/line-messaging#readme",
+  "dependencies": {
+    "request": "^2.75.0"
+  }
+}
