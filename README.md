@@ -39,6 +39,8 @@ var bot = new LINEBot ({
 
 You can call API through the bot client instance.
 
+#### Reply message
+
 sample is following;
 
 ```js
@@ -57,7 +59,31 @@ var textMessageBuilder = new LINEBot.TextMessageBuilder('hello');
 bot.replyMessage('<reply token>', textMessageBuilder);
 ```
 
-LINEBot.replyMessage() takes reply token and MessageBuilder. This method sends message that is built by MessageBuilder to the destination.
+LINEBot#replyMessage() takes reply token and MessageBuilder. This method sends message that is built by MessageBuilder to the destination.
+
+#### Get profile
+
+Get detail information of user.
+
+```js
+bot.getProfile('<user id>').then(function(data) {
+  // add your code when success.
+}).catch(function(error) {
+  // add your code when error.
+});
+```
+
+When LINEBot#getProfile() success return JSON object.
+
+Response body example
+```js
+{
+    "displayName":"LINE taro",
+    "userId":"Uxxxxxxxxxxxxxx...",
+    "pictureUrl":"http://obs.line-apps.com/...",
+    "statusMessage":"Hello, LINE!"
+}
+```
 
 #### Push message
 
@@ -74,3 +100,68 @@ More advanced sample is below;
 var textMessageBuilder = new LINEBot.TextMessageBuilder('hello');
 bot.pushMessage('<user id>', textMessageBuilder);
 ```
+
+Other method;
+
+Send text message
+```js
+bot.pushTextMessage('<user id>', '<your message>');
+```
+Send image message
+```js
+bot.pushImageMessage('<user id>', '<original content url>', '<preview image url>');
+```
+
+Send video message
+```js
+bot.pushVideoMessage('<user id>', '<original content url>', '<preview image url>');
+```
+
+Send audio message
+```js
+bot.pushAudioMessage('<user id>', '<original content url>', '<duration>');
+```
+
+Send location message
+```js
+bot.pushLocationMessage('<user id>', '<title>', '<address>', '<latitude>', '<longitude>');
+```
+
+Send sticker message
+```js
+bot.pushStickerMessage('<user id>', '<package id>', '<sticker id>');
+```
+If you want detail information of sticker, please refer [Sticker](https://devdocs.line.me/files/sticker_list.pdf)
+
+
+#### MessageBuilder
+Type of message depends on the type of instance of MessageBuilderThat. means this method sends text message if you pass TextMessageBuilder, on the other hand it sends image message if you pass ImageMessageBuilder.
+
+Other methods that take MessageBuilder behave the same.
+
+#### Webhook
+LINE's server sends user action (message, image, location and etc.) to your bot server. Request of that contains event(s); event is action of the user.
+
+Flow of webhook handling is like following;
+
+1. Receive webhook from LINE's server.
+2. Parse request payload by LINEBot#parseEventRequest(body, signature).
+3. Iterate parsed events and some react as you like.
+
+#### Other
+
+Validate signature.
+
+```js
+var isValid = bot.validateSignature('<raw body>', '<signature>');
+```
+
+Get signature from header (Express framework).
+```js
+var signature = bot.getHeaderSignature('<HTTP request>');
+```
+
+See Also
+--
+
+- [https://devdocs.line.me/en/#messaging-api](https://devdocs.line.me/en/#messaging-api)

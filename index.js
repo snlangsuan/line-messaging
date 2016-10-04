@@ -3,7 +3,7 @@ var BaseEvent = require('./lib/linebot/event/base.event');
 
 module.exports = {
   create: function(options) {
-    if ( !options || !options['channelId'] || !options['channelSecret'] || !options['channelToken'] ) throw new Error('Invalid parameter');
+    if ( !options || !options['channelID'] || !options['channelSecret'] || !options['channelToken'] ) throw new Error('Invalid parameter');
     for ( var i in options ) {
       this[i] = options[i];
     }
@@ -23,6 +23,7 @@ module.exports = {
   LocationMessageBuilder: require('./lib/linebot/message/location.message'),
   StickerMessageBuilder: require('./lib/linebot/message/sticker.message'),
   MultiMessageBuilder: require('./lib/linebot/message/multi.message'),
+
   ImagemapMessageBuilder: require('./lib/linebot/message/imagemap.message'),
 
   // Imagemap utility
@@ -32,6 +33,7 @@ module.exports = {
   // Imagemap action
   ImagemapMessageAction: require('./lib/linebot/action/imagemap.message.action'),
   ImagemapUriAction: require('./lib/linebot/action/imagemap.uri.action'),
+
   TemplateMessageBuilder: require('./lib/linebot/message/template.message'),
 
   // Template types
@@ -44,6 +46,7 @@ module.exports = {
   MessageTemplateAction: require('./lib/linebot/action/template.message.action'),
   PostbackTemplateAction: require('./lib/linebot/action/template.postback.action'),
   UriTemplateAction: require('./lib/linebot/action/template.uri.action'),
+  
   MessageType: Message.TYPE,
   EventType: BaseEvent.TYPE,
   EventSourceType: BaseEvent.SOURCE_TYPE
