@@ -1,3 +1,7 @@
 language: node_js
 node_js:
   - "4"
+before_script:
+  - npm install -g mocha
+  - npm install -g chai
+  - npm install -g nock
