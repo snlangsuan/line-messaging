@@ -2,6 +2,7 @@
 
 ==
 
+[![npm version](https://badge.fury.io/js/line-messaging.svg)](https://badge.fury.io/js/line-messaging)
 [![Build Status](https://travis-ci.org/snlangsuan/line-messaging.svg?branch=master)](https://travis-ci.org/snlangsuan/line-messaging)
 
 SDK of the LINE Messaging API for Node.js
