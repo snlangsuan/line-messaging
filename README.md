@@ -256,7 +256,7 @@ column3.setTitle('this is item 3')
 
 var carousel = new LINEBot.CarouselTemplateBuilder([column1, column2, column3]);
 ```
-And after create template, Your must be create MessageBuilder before sends;
+And after create template, Your must be create instance MessageBuilder before sends;
 
 ```js
 var template = new LINEBot.TemplateMessageBuilder('this is a buttons template', buttons);
