@@ -28,7 +28,7 @@ var LINEBot = require('line-messaging');
 Instance of bot client is a handler of the Messaging API.
 
 ```js
-var bot = new LINEBot ({
+var bot = LINEBot.create({
   channelID: '<your channel ID>',
   channelSecret: '<your channel secret>',
   channelToken: '<your channel token>'
