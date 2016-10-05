@@ -220,6 +220,7 @@ buttons.addAction('View detail', 'http://example.com/page/123', LINEBot.ActionTy
 - Confirm
 
 ```js
+// create confirm template
 var confirm = new LINEBot.ConfirmTemplateBuilder();
 confirm.setMessage('Are you sure?');
 confirm.setPositiveAction('OK', 'ok');
@@ -254,6 +255,11 @@ column3.setTitle('this is item 3')
        .addAction('View detail', 'http://example.com/page/333', LINEBot.ActionType.URI);
 
 var carousel = new LINEBot.CarouselTemplateBuilder([column1, column2, column3]);
+```
+And after create template, Your must be create MessageBuilder before sends;
+
+```js
+var template = new LINEBot.TemplateMessageBuilder('this is a buttons template', buttons);
 ```
 
 #### Webhook
