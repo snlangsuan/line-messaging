@@ -1,5 +1,7 @@
 var Message = require('./lib/linebot/message');
+var Action = require('./lib/linebot/action');
 var BaseEvent = require('./lib/linebot/event/base.event');
+var Template = require('./lib/linebot/message/template');
 
 module.exports = {
   create: function(options) {
@@ -46,8 +48,10 @@ module.exports = {
   MessageTemplateAction: require('./lib/linebot/action/template.message.action'),
   PostbackTemplateAction: require('./lib/linebot/action/template.postback.action'),
   UriTemplateAction: require('./lib/linebot/action/template.uri.action'),
-  
+
   MessageType: Message.TYPE,
   EventType: BaseEvent.TYPE,
-  EventSourceType: BaseEvent.SOURCE_TYPE
+  EventSourceType: BaseEvent.SOURCE_TYPE,
+  TemplateType: Template.TYPE,
+  ActionType: Action.TYPE
 };

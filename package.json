@@ -1,6 +1,6 @@
 {
   "name": "line-messaging",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "SDK of the LINE Message API for Node.js",
   "main": "index.js",
   "scripts": {
