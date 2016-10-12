@@ -35,6 +35,52 @@ var bot = LINEBot.create({
 })
 ```
 
+### Create webhook with bot client instance (support on v.1.1.x)
+sample is following
+```js
+var bot = LINEBot.create({
+  channelID: '<your channel ID>',
+  channelSecret: '<your channel secret>',
+  channelToken: '<your channel token>'
+});
+bot.webhook('/webhook');
+bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
+  // add code below.
+});
+bot.listen(8080);
+```
+
+#### Using with Node http server
+```js
+var server = require('http').createServer(handler);
+var bot = LINEBot.create({
+  channelID: '<your channel ID>',
+  channelSecret: '<your channel secret>',
+  channelToken: '<your channel token>'
+}, server);
+bot.webhook('/webhook');
+bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
+  // add code below.
+});
+server.listen(8080);
+```
+
+#### Using with Express 3/4
+```js
+var app = require('express')();
+var server = require('http').Server(app);
+var bot = LINEBot.create({
+  channelID: '<your channel ID>',
+  channelSecret: '<your channel secret>',
+  channelToken: '<your channel token>'
+}, server);
+bot.webhook('/webhook');
+bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
+  // add code below.
+});
+server.listen(8080);
+```
+
 ### Call API
 
 You can call API through the bot client instance.
@@ -220,6 +266,7 @@ buttons.addAction('View detail', 'http://example.com/page/123', LINEBot.ActionTy
 - Confirm
 
 ```js
+// create confirm template
 var confirm = new LINEBot.ConfirmTemplateBuilder();
 confirm.setMessage('Are you sure?');
 confirm.setPositiveAction('OK', 'ok');
@@ -254,6 +301,11 @@ column3.setTitle('this is item 3')
        .addAction('View detail', 'http://example.com/page/333', LINEBot.ActionType.URI);
 
 var carousel = new LINEBot.CarouselTemplateBuilder([column1, column2, column3]);
+```
+And after create template, Your must be create instance MessageBuilder before sends;
+
+```js
+var template = new LINEBot.TemplateMessageBuilder('this is a buttons template', buttons);
 ```
 
 #### Webhook

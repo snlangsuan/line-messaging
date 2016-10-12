@@ -39,7 +39,7 @@ describe('ParseEventRequest', function() {
       }]
     };
 
-    var signature = 'JEjX+EqsFc2/xQqx59oQfje61hzBiQ8KlYOMIo25lEs=';
+    var signature = 'aXw15BTDYeDJoj43ZLHYvk+acSoTCiUb//kTYKovZSg=';
 
     var receives = Event.parseEventRequest(requestJsonData, options.channelSecret, signature);
 

@@ -4,7 +4,7 @@ var BaseEvent = require('./lib/linebot/event/base.event');
 var Template = require('./lib/linebot/message/template');
 
 module.exports = {
-  create: function(options) {
+  create: function(options, server) {
     if ( !options || !options['channelID'] || !options['channelSecret'] || !options['channelToken'] ) throw new Error('Invalid parameter');
     for ( var i in options ) {
       this[i] = options[i];
@@ -13,7 +13,11 @@ module.exports = {
     var LINEClient = require('./lib/linebot/lineclient');
     var client = new LINEClient(this.channelToken);
     var LINEBot = require('./lib/linebot');
-    return new LINEBot(client, this.channelSecret, options);
+    var bot = new LINEBot(client, this.channelSecret, options);
+
+    if ( server != null ) bot.attach(server);
+
+    return bot;
   },
   createClient: require('./lib/linebot/lineclient'),
   createBot: require('./lib/linebot'),
@@ -49,9 +53,9 @@ module.exports = {
   PostbackTemplateAction: require('./lib/linebot/action/template.postback.action'),
   UriTemplateAction: require('./lib/linebot/action/template.uri.action'),
 
-  MessageType: Message.TYPE,
-  EventType: BaseEvent.TYPE,
-  EventSourceType: BaseEvent.SOURCE_TYPE,
-  TemplateType: Template.TYPE,
-  ActionType: Action.TYPE
+  Message: Message.TYPE,
+  Events: BaseEvent.TYPE,
+  EventSource: BaseEvent.SOURCE_TYPE,
+  Template: Template.TYPE,
+  Action: Action.TYPE
 };
