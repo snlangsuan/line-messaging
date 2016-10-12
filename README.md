@@ -24,18 +24,7 @@ Getting started
 var LINEBot = require('line-messaging');
 ```
 
-### Create the bot client instance
-Instance of bot client is a handler of the Messaging API.
-
-```js
-var bot = LINEBot.create({
-  channelID: '<your channel ID>',
-  channelSecret: '<your channel secret>',
-  channelToken: '<your channel token>'
-})
-```
-
-### Create webhook with bot client instance (support on v.1.1.x)
+### Create bot server with bot client instance (support on v.1.1.x)
 sample is following
 ```js
 var bot = LINEBot.create({
@@ -79,6 +68,17 @@ bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
 });
 server.listen(8080);
+```
+
+### Create the bot client instance
+Instance of bot client is a handler of the Messaging API.
+
+```js
+var bot = LINEBot.create({
+  channelID: '<your channel ID>',
+  channelSecret: '<your channel secret>',
+  channelToken: '<your channel token>'
+})
 ```
 
 ### Call API
