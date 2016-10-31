@@ -6,14 +6,11 @@ var Template = require('./lib/linebot/message/template');
 module.exports = {
   create: function(options, server) {
     if ( !options || !options['channelID'] || !options['channelSecret'] || !options['channelToken'] ) throw new Error('Invalid parameter');
-    for ( var i in options ) {
-      this[i] = options[i];
-    }
 
     var LINEClient = require('./lib/linebot/lineclient');
-    var client = new LINEClient(this.channelToken);
+    var client = new LINEClient(options['channelToken']);
     var LINEBot = require('./lib/linebot');
-    var bot = new LINEBot(client, this.channelSecret, options);
+    var bot = new LINEBot(client, options['channelSecret'], options);
 
     if ( server != null ) bot.attach(server);
 
