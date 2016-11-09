@@ -63,7 +63,7 @@ var bot = LINEBot.create({
   channelSecret: '<your channel secret>',
   channelToken: '<your channel token>'
 }, server);
-bot.webhook('/webhook');
+app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
 });
