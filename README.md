@@ -89,7 +89,7 @@ You can call API through the bot client instance.
 sample is following;
 
 ```js
-bot.replyText('<reply token>', 'hello!').then(function(data) {
+bot.replyTextMessage('<reply token>', 'hello!').then(function(data) {
   // add your code when success.
 }).catch(function(error) {
   // add your code when error.
@@ -311,24 +311,14 @@ var template = new LINEBot.TemplateMessageBuilder('this is a buttons template', 
 #### Webhook
 LINE's server sends user action (message, image, location and etc.) to your bot server. Request of that contains event(s); event is action of the user.
 
-Flow of webhook handling is like following;
-
-1. Receive webhook from LINE's server.
-2. Parse request payload by LINEBot#parseEventRequest(body, signature).
-3. Iterate parsed events and some react as you like.
-
-
-#### Other
-Validate signature.
-
-```js
-var isValid = bot.validateSignature('<raw body>', '<signature>');
-```
-
-Get signature from header (Express framework).
-```js
-var signature = bot.getHeaderSignature('<HTTP request>');
-```
+Webhook events:
+- MESSAGE : Event name which contains the sent message.
+- FOLLOW : Event name for when your account is added as a friend (or unblocked). You can reply to follow events.
+- UNFOLLOW : Event name for when your account is blocked.
+- JOIN : Event name for when your account joins a group or talk room. You can reply to join events.
+- LEAVE : Event name for when your account leaves a group.
+- POSTBACK : Event name for when a user performs an action on a template message which initiates a postback. You can reply to postback events.
+- BEACON : Event name for when a user detects a LINE Beacon. You can reply to beacon events.
 
 See Also
 --
