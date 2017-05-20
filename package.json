@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/snlangsuan/line-messaging#readme",
   "dependencies": {
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "utf8": "^2.1.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
