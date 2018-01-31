@@ -51,7 +51,8 @@ bot.webhook('/webhook');
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
 });
-server.listen(8080);
+bot.attach(server);
+bot.listen(8080);
 ```
 
 #### Using with Express 3/4
@@ -67,7 +68,8 @@ app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
 });
-server.listen(8080);
+bot.attach(server);
+bot.listen(8080);
 ```
 
 ### Create the bot client instance
