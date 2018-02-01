@@ -3,16 +3,17 @@ var chai = require('chai');
 var should = chai.should();
 var LINEBot = require('../');
 var request = require('request');
+var  app = require('express')();
 
 describe('LINEServerReqestWebhook', function () {
   var options = {
     channelID: '1482333960',
     channelSecret: 'testsecret',
-    channelToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9/eyJzdWIiOiIyMDAiLCJpc3MiOiJodHRwOlwvXC9lZGNtcy5tb25vaW5mb3N5c3RlbXMuY29tXC9hcGlcL3YxXC9hdXRoXC9sb2dpbiIsImlhdCI6MTQ3NTAzMDc5MiwiZXhwIjoxNDc1MDM0MzkyLCJuYmYiOjE0NzUwMzA3OTIsImp0aSI6IjNkMTlkZjRhOTQ4YzgxNjU2ZTUzMzZlZjVmY2E2YWIwIn0/Fdmehk8h50Aeg5k8yHG9vsNJXvVQGQI5rdpz0rndge8'
+    channelAccessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9/eyJzdWIiOiIyMDAiLCJpc3MiOiJodHRwOlwvXC9lZGNtcy5tb25vaW5mb3N5c3RlbXMuY29tXC9hcGlcL3YxXC9hdXRoXC9sb2dpbiIsImlhdCI6MTQ3NTAzMDc5MiwiZXhwIjoxNDc1MDM0MzkyLCJuYmYiOjE0NzUwMzA3OTIsImp0aSI6IjNkMTlkZjRhOTQ4YzgxNjU2ZTUzMzZlZjVmY2E2YWIwIn0/Fdmehk8h50Aeg5k8yHG9vsNJXvVQGQI5rdpz0rndge8'
   };
 
-  var bot = LINEBot.create(options);
-  bot.webhook('/webhook');
+  var bot = LINEBot.Client(options);
+  app.use(bot.webhook('/webhook'));
   bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
     replyToken.should.equal('nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
     message.isUserEvent().should.be.true;
@@ -32,11 +33,7 @@ describe('LINEServerReqestWebhook', function () {
   });
 
   before(function () {
-    bot.listen(8000);
-  });
-
-  after(function () {
-    bot.close();
+    app.listen(8000);
   });
 
   it('should return 200', function (done) {

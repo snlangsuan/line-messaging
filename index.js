@@ -4,20 +4,18 @@ var BaseEvent = require('./lib/linebot/event/base.event');
 var Template = require('./lib/linebot/message/template');
 
 module.exports = {
-  create: function(options, server) {
-    if ( !options || !options['channelID'] || !options['channelSecret'] || !options['channelToken'] ) throw new Error('Invalid parameter');
+  Client: function (config) {
+    if (!config || !config['channelID'] || !config['channelSecret'] || !config['channelAccessToken']) {
+      throw new Error('Invalid parameter');
+    }
 
-    var LINEClient = require('./lib/linebot/lineclient');
-    var client = new LINEClient(options['channelToken']);
-    var LINEBot = require('./lib/linebot');
-    var bot = new LINEBot(client, options['channelSecret'], options);
-
-    if ( server != null ) bot.attach(server);
+    var LINEClient = require('./lib/linebot/client');
+    var client = new LINEClient(config['channelAccessToken']);
+    var LINEBot = require('./lib/bot');
+    var bot = new LINEBot(client, config);
 
     return bot;
   },
-  createClient: require('./lib/linebot/lineclient'),
-  createBot: require('./lib/linebot'),
   // Message builder
   TextMessageBuilder: require('./lib/linebot/message/text.message'),
   ImageMessageBuilder: require('./lib/linebot/message/image.message'),
@@ -55,4 +53,4 @@ module.exports = {
   EventSource: BaseEvent.SOURCE_TYPE,
   Template: Template.TYPE,
   Action: Action.TYPE
-};
+}
