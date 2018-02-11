@@ -31,7 +31,7 @@ var bot = LINEBot.Client({
   channelID: '<your channel ID>',
   channelSecret: '<your channel secret>',
   channelAccessToken: '<your channel token>'
-}, server);
+});
 app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
