@@ -36,7 +36,7 @@ app.use(bot.webhook('/webhook'));
 bot.on(LINEBot.Events.MESSAGE, function(replyToken, message) {
   // add code below.
 });
-bot.listen(8080);
+app.listen(8080);
 ```
 
 ### Create the bot client instance
