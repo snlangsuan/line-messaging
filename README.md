@@ -150,7 +150,7 @@ bot.pushLocationMessage('<user id>', 'my location', '〒150-0002 東京都渋谷
 
 Send sticker message
 ```js
-bot.pushStickerMessage('<user id>', 1, 1);
+bot.pushStickerMessage('<user id>', <STKPKGID>, <STKID>);
 ```
 If you want detail information of sticker, please refer [Sticker](https://devdocs.line.me/files/sticker_list.pdf)
 
@@ -191,7 +191,7 @@ var location = new LINEBot.LocationMessageBuilder('my location', '〒150-0002 �
 
 StickerMessageBuilder
 ```js
-var sticker = new LINEBot.StickerMessageBuilder(1, 1);
+var sticker = new LINEBot.StickerMessageBuilder(<STKPKGID>, <STKID>);
 ```
 
 MultiMessageBuilder
