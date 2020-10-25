@@ -1,6 +1,6 @@
 # Attention!
 
-Thanks for use, Thank you for your use, no further development. Please move to [LINE Messaging API SDK for nodejs](https://line.github.io/line-bot-sdk-nodejs/).
+Thank you for your use, no further development. Please move to [LINE Messaging API SDK for nodejs](https://line.github.io/line-bot-sdk-nodejs/).
 
 # line-messaging
 
