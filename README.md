@@ -112,15 +112,6 @@ bot.getMessageContent('<message id>').then(function(data) {
 When LINEBot#getMessageContent() success return the content in binary.
 
 #### Push message
-sample is following;
-
-```js
-bot.pushTextMessage('<user id>', 'hello!');
-```
-This procedure sends a message to the destination that is associated with <user id>.
-
-More advanced sample is below;
-
 ```js
 var textMessageBuilder = new LINEBot.TextMessageBuilder('hello');
 bot.pushMessage('<user id>', textMessageBuilder);
